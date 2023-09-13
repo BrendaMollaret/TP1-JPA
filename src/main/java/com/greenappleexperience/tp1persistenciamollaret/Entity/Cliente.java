@@ -26,7 +26,7 @@ public class Cliente implements Serializable {
     private String email;
     private String telefono;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     @Builder.Default
     @JoinColumn(name = "fk_CLIENTE")
     private List<Pedido> pedidoList = new ArrayList<Pedido>();
@@ -60,7 +60,7 @@ public class Cliente implements Serializable {
             int counter = 0;
             for (DetallePedido detalle: pedido.getDetallePedidoList()){
                 counter += 1;
-                System.out.println("\nProducto "+counter+": "+detalle.getProducto().getDenominacion()+" \n cantidad: "+detalle.getCantidad()+"  \n subtotal: "+detalle.getSubtotal());
+                System.out.println("\nProducto "+counter+": "+detalle.getProducto().getDenominacion()+"\nCantidad: "+detalle.getCantidad()+"\nSubtotal: "+detalle.getSubtotal());
             }
         }
     }

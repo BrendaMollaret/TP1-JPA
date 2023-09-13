@@ -220,9 +220,7 @@ public class Tp1PersistenciaMollaretApplication {
             clienteRepository.save(cliente1);
 
 
-
-
-
+            //-----------------------------------------------------------------
 
 
             //Recuperar el cliente de la base de datos
@@ -238,6 +236,8 @@ public class Tp1PersistenciaMollaretApplication {
                 System.out.println("Telefono: "+clienteRecuperado.getTelefono());
 
                 clienteRecuperado.mostrarDomicilios();
+                clienteRecuperado.mostrarPedidos();
+
 
 
 
