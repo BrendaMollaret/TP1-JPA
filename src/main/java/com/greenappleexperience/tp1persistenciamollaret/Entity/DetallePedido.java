@@ -23,7 +23,7 @@ public class DetallePedido implements Serializable {
     private int cantidad;
     private double subtotal;
 
-    @ManyToOne()//cascade = CascadeType.PERSIST
-    @JoinColumn(name = "fk_PRODUCTO")
+    @ManyToOne(cascade = CascadeType.REFRESH)//cascade = CascadeType.PERSIST
+    @JoinColumn(name = "FK_PRODUCTO")
     private Producto producto;
 }

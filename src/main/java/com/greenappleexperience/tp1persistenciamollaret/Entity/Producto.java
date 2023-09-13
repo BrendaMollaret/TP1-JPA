@@ -1,5 +1,6 @@
 package com.greenappleexperience.tp1persistenciamollaret.Entity;
 
+import com.greenappleexperience.tp1persistenciamollaret.Enum.TipoProducto;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -22,7 +23,7 @@ public class Producto implements Serializable {
     @Id
     private Long id;
 
-    private String tipo;
+    private TipoProducto tipo; //enum
     private int tiempoEstimadoCocina;
     private String denominacion;
     private double precioVenta;

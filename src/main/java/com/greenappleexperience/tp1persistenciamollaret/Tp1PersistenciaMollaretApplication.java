@@ -1,6 +1,10 @@
 package com.greenappleexperience.tp1persistenciamollaret;
 
 import com.greenappleexperience.tp1persistenciamollaret.Entity.*;
+import com.greenappleexperience.tp1persistenciamollaret.Enum.EstadoPedido;
+import com.greenappleexperience.tp1persistenciamollaret.Enum.FormaPago;
+import com.greenappleexperience.tp1persistenciamollaret.Enum.TipoEnvio;
+import com.greenappleexperience.tp1persistenciamollaret.Enum.TipoProducto;
 import com.greenappleexperience.tp1persistenciamollaret.Repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -42,11 +46,6 @@ public class Tp1PersistenciaMollaretApplication {
 
     @Bean
     CommandLineRunner init(ClienteRepository clienteRepository,
-                           FacturaRepository facturaRepository,
-                           PedidoRepository pedidoRepository,
-                           ProductoRepository productoRepository,
-                           DomicilioRepository domicilioRepository,
-                           DetallePedidoRepository detallePedidoRepository,
                            RubroRepository rubroRepository) {
 
         return args -> {
@@ -115,7 +114,7 @@ public class Tp1PersistenciaMollaretApplication {
                     .precioCompra(200)
                     .tiempoEstimadoCocina(45)
                     .unidadMedida("cm")
-                    .tipo("Acompañamiento")
+                    .tipo(TipoProducto.INSUMO)
 
                     .build();
 
@@ -129,7 +128,7 @@ public class Tp1PersistenciaMollaretApplication {
                     .precioCompra(200)
                     .tiempoEstimadoCocina(45)
                     .unidadMedida("cm")
-                    .tipo("Comida")
+                    .tipo(TipoProducto.INSUMO)
 
                     .build();
 
@@ -164,15 +163,15 @@ public class Tp1PersistenciaMollaretApplication {
             Pedido pedido1 = Pedido.builder()
                     .total(2500)
                     .fecha(fechaActual)
-                    .tipoEnvio("RETIRA")
-                    .estado("INICIADO")
+                    .tipoEnvio(TipoEnvio.RETIRA)
+                    .estado(EstadoPedido.INICIADO)
                     .build();
 
             Pedido pedido2 = Pedido.builder()
                     .total(4000)
                     .fecha(fechaActual)
-                    .tipoEnvio("DELIVERY")
-                    .estado("ENTREGADO")
+                    .tipoEnvio(TipoEnvio.DELIVERY)
+                    .estado(EstadoPedido.ENTREGADO)
                     .build();
 
 
@@ -182,14 +181,15 @@ public class Tp1PersistenciaMollaretApplication {
                     .descuento(300)
                     .total(2200)
                     .numero(2)
-                    .formaPago("MERCADO_PAGO")
+                    .formaPago(FormaPago.EFECTIVO)
+
                     .build();
             Factura factura2 = Factura.builder()
                     .fecha(fechaActual)
                     .descuento(500)
                     .total(3500)
                     .numero(2)
-                    .formaPago("EFECTIVO")
+                    .formaPago(FormaPago.MERCADO_PAGO)
                     .build();
 
 
@@ -226,8 +226,7 @@ public class Tp1PersistenciaMollaretApplication {
             //Recuperar el cliente de la base de datos
             Cliente clienteRecuperado = clienteRepository.findById(cliente.getId()).orElse(null);
 
-            //prueba pedido
-            Pedido pedidoRecuperado = pedidoRepository.findById(pedido1.getId()).orElse(null);
+
             if (clienteRecuperado != null ){
                 System.out.println("\n------------------ DATOS CLIENTE ------------------");
                 System.out.println("Nombre: "+clienteRecuperado.getNombre());

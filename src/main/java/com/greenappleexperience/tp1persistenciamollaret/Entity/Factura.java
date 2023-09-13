@@ -1,6 +1,7 @@
 package com.greenappleexperience.tp1persistenciamollaret.Entity;
 
 
+import com.greenappleexperience.tp1persistenciamollaret.Enum.FormaPago;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -29,7 +30,7 @@ public class Factura implements Serializable {
     private int numero;
     private LocalDate fecha;
     private double descuento;
-    private String formaPago;
+    private FormaPago formaPago; //enum
     private int total;
 
 }

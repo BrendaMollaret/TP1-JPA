@@ -1,5 +1,7 @@
 package com.greenappleexperience.tp1persistenciamollaret.Entity;
 
+import com.greenappleexperience.tp1persistenciamollaret.Enum.EstadoPedido;
+import com.greenappleexperience.tp1persistenciamollaret.Enum.TipoEnvio;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -21,9 +23,9 @@ public class Pedido implements Serializable {
     @Id
     private Long id;
     private LocalDate fecha;
-    private String tipoEnvio;
+    private TipoEnvio tipoEnvio; //enum
     private double total;
-    private String estado;
+    private EstadoPedido estado; //enum
 
     //Relación con factura
     @OneToOne(cascade = CascadeType.PERSIST)
