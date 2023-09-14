@@ -1,6 +1,6 @@
 # TP1-JPA
 
-##Trabajo práctico JPA
+## Trabajo práctico JPA
 
 - Dentro hay: Enumeraciones, Repositorios, Entidades.
 - Mostrará los sql de Hibernate así como también buscará un Cliente que fue creado y guardado con su ClienteRepositorio, y mostrará sus datos junto con dos métodos de mostrar Pedidos y Domicilios.
